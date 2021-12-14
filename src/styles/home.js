@@ -73,6 +73,8 @@ export const Search = styled.input`
 
 export const Content = styled.div`
   padding: 2rem;
+  overflow-y: auto;
+  height: calc(100vh - 8rem);
 `;
 
 export const Logo = styled.div`
@@ -115,8 +117,10 @@ export const UserBody = styled(ToggledVisibleContainer)`
   top: calc(100% + 1rem);
   backdrop-filter: blur(0.5rem);
   z-index: 5;
-  box-shadow: 0 0.8rem 1rem 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.1);
   min-width: 100%;
+  overflow: hidden;
+  min-width: 20rem;
 `;
 
 export const UserBodyLink = styled.p`

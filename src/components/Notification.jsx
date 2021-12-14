@@ -15,8 +15,7 @@ export default function Notification({ type, image, user }) {
         )}
         <Content>
           <Link to={`/user/${user.short}`}>{user.name}</Link>{" "}
-          {notifications[`${type}`]}{" "}
-          {type === "like" && <Link to="/">"kek"</Link>}
+          {notifications[`${type}`]}
         </Content>
       </Body>
       <Date>just now</Date>

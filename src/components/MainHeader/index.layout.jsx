@@ -7,6 +7,7 @@ import { ReactComponent as User } from "../../assets/user.svg";
 import { ReactComponent as Logout } from "../../assets/turnoff.svg";
 import Notification from "../Notification";
 import Image from "../Image";
+import { users } from "../../prefabs";
 
 export default function MainHeaderLayout({
   isNotificationsOpened,
@@ -36,38 +37,18 @@ export default function MainHeaderLayout({
           <Bell />
         </H.NotificationsButton>
         <H.NotificatiosBody opened={isNotificationsOpened}>
-          <Notification
-            user={{
-              name: "Dark Side of Stitch",
-              short: "dss_shit",
-            }}
-            image="https://shorturl.at/hwFU3"
-            type="follower"
-          />
-          <Notification
-            user={{
-              name: "Cute Amelia",
-              short: "cutieee",
-            }}
-            image="https://shorturl.at/ilzUX"
-            type="post"
-          />
-          <Notification
-            user={{
-              name: "Noir",
-              short: "cumembert",
-            }}
-            image="https://shorturl.at/jAFI8"
-            type="like"
-          />
-          <Notification
-            user={{
-              name: "Noir",
-              short: "cumembert",
-            }}
-            image="https://shorturl.at/jAFI8"
-            type="post"
-          />
+          {users.map((u, id) => (
+            <Notification
+              key={id}
+              user={u}
+              image={u.avatar}
+              type={
+                (id === 0 && "follower") ||
+                (id === 1 && "post") ||
+                (id === 2 && "like")
+              }
+            />
+          ))}
         </H.NotificatiosBody>
       </H.Notifications>
       <H.User ref={userBody}>
