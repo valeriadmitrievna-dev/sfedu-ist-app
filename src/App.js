@@ -1,11 +1,10 @@
-import Home from "./pages/Home";
+import { useRoutes } from "./routes";
+import { useSelector } from "react-redux";
 
-function App() {
-  return (
-    <>
-      <Home />
-    </>
-  );
-}
+const App = () => {
+  const { isAuth } = useSelector(state => state.root);
+  const routes = useRoutes(true);
+  return routes;
+};
 
 export default App;

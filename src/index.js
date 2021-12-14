@@ -1,22 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "antd/dist/antd.css";
 import "./styles/index.css";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
-const light = {
-  mainColorDark: "84, 58, 183",
-  mainColorMedium: "31, 172, 223",
-  mainColorLight: "0, 172, 193",
+const theme = {
+  mainColorDark: "51, 168, 161",
+  mainColorMedium: "67, 139, 249",
+  mainColorLight: "176, 166, 229",
   textColor: "#fff",
   wavesColor: "255, 255, 255",
 };
 
-const theme = light;
-
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <App />
-  </ThemeProvider>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </Provider>,
   document.getElementById("root")
 );
