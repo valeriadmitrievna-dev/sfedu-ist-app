@@ -111,7 +111,7 @@ export const UserLabel = styled.div`
 
 export const UserBody = styled(ToggledVisibleContainer)`
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 0.8rem;
   right: 0;
   top: calc(100% + 1rem);
@@ -129,9 +129,13 @@ export const UserBodyLink = styled.p`
   gap: 1rem;
   padding: 1rem;
   margin: 0;
+  color: #292D32;
   svg {
     width: 2rem;
     height: 2rem;
+    path {
+      stroke: #292D32;
+    }
   }
   font-size: 1.6rem;
   line-height: 2rem;

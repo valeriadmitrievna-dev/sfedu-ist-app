@@ -32,9 +32,8 @@ export const Container = styled.div`
 `;
 
 export const Date = styled.p`
-  color: #fff;
+  color: #292D32;
   font-size: 1.4rem;
-  font-weight: 300;
   margin: 0;
   margin-top: 0.5rem;
   text-align: right;
@@ -67,6 +66,7 @@ export const Content = styled.p`
   display: inline;
   flex-grow: 1;
   flex-basis: 0;
+  color: #292D32;
   a {
     font-family: "Comfortaa", sans-serif;
     color: rgb(${props => props.theme.mainColorMedium});

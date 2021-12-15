@@ -9,16 +9,7 @@ export default function HomeLayout() {
     <H.Body>
       <MainHeader />
       <H.Content>
-        <PicturesGrid
-          category="new"
-          pictures={posts
-            .sort((a, b) => new Date(b.created) - new Date(a.created))
-            .slice(0, 10)}
-        />
-        <PicturesGrid
-          category="popular"
-          pictures={posts.sort((a, b) => b.likes - a.likes).slice(0, 10)}
-        />
+        <PicturesGrid pictures={posts} />
       </H.Content>
     </H.Body>
   );
