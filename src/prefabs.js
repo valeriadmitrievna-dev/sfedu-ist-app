@@ -105,16 +105,17 @@ export const posts = [
   },
   {
     id: 6,
-    title: "accusa",
-    description: "omen iuqes tema te diuqila ae sumasucca",
+    title: "Imagify Lead Developer",
+    description:
+      "There is nothing better than a bottle of cold beer in between developing.",
     created: "2021-10-14T06:06:24.815Z",
     image:
       "https://sun9-6.userapi.com/impg/NnM-tNqaZYQ3l76x546xixD4Gn-h2MHp8AbfeA/fzt6hEhpwWU.jpg?size=1200x1600&quality=96&sign=2ae959963ddf6a0d4c4e83bced3b61e8&type=album",
     owner: {
-      name: "Noir",
-      short: "cumembert",
+      name: "Lera",
+      short: "ler_ochka",
       avatar:
-        "https://sun9-54.userapi.com/impg/LYNe3M_MuzTVUqIozKd1Qkvtb6Q2sSWFKvdaZQ/osjbR1VbvVE.jpg?size=828x828&quality=96&sign=dcaa70f6e32e56fcefd7a4f5d20a6cc3&type=album",
+        "https://sun9-17.userapi.com/impg/_2eyoGJ0DxuUcYHaQ4ajG6cWp_fVOwdNxK0H8w/ObbUIJezcn4.jpg?size=1200x1600&quality=96&sign=a4be83b5f0f9cc0a534c8988b84b2e39&type=album",
     },
     likes: 60,
   },
