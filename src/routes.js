@@ -11,18 +11,18 @@ import Home from "./pages/Home/index.jsx";
 export const useRoutes = isAuth => {
   if (isAuth) {
     return (
-      <Container>
+      <>
         <Switch>
           <Route exact path="/home">
             <Home />
           </Route>
           <Redirect to="/home" />
         </Switch>
-      </Container>
+      </>
     );
   }
   return (
-    <Container>
+    <>
       <Waves />
       <Switch>
         <Route exact path="/">
@@ -39,6 +39,6 @@ export const useRoutes = isAuth => {
         </Route>
         <Redirect to="/" />
       </Switch>
-    </Container>
+    </>
   );
 };

@@ -92,12 +92,19 @@ export const ModalContent = styled.div`
 export const ModalPictureSection = styled.div`
   display: flex;
   gap: 1.6rem;
+  @media (max-width: 560px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ModalPicture = styled.div`
   border-radius: 1rem;
   overflow: hidden;
   width: 50%;
+  @media (max-width: 560px) {
+    width: auto;
+    max-width: 100%;
+  }
 `;
 
 export const ModalPictureInfo = styled.div`

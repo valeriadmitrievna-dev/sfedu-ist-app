@@ -2,6 +2,7 @@ import { useRoutes } from "./routes";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { notification } from "antd";
+import { GlobalStyle } from "./styles/global";
 
 const App = () => {
   const { isAuth } = useSelector(state => state.root);
@@ -16,7 +17,12 @@ const App = () => {
       });
   }, []);
 
-  return routes;
+  return (
+    <>
+      <GlobalStyle />
+      {routes}
+    </>
+  );
 };
 
 export default App;

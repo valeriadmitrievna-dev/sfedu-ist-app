@@ -23,7 +23,7 @@ export default function Home() {
 
   const handleCheckScroll = e => {
     const { scrollTop, scrollHeight, clientHeight } = e.target;
-    if (Math.ceil(scrollTop + clientHeight) === scrollHeight) {
+    if (Math.ceil(scrollTop + clientHeight) >= scrollHeight) {
       handleLoadMore();
     }
   };

@@ -5,7 +5,7 @@ import PicturesGrid from "../../components/PicturesGrid";
 
 export default function HomeLayout({ pictures, loading, handleCheckScroll }) {
   return (
-    <H.Body>
+    <H.Body onScroll={handleCheckScroll}>
       <MainHeader />
       <H.Content onScroll={handleCheckScroll}>
         <PicturesGrid pictures={pictures} loading={loading} />

@@ -1,12 +1,14 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-export const Container = styled.main`
-  background: linear-gradient(
+export const GlobalStyle = createGlobalStyle`
+  #root {
+    background: linear-gradient(
     60deg,
     rgb(${props => props.theme.mainColorLight}) 0%,
     rgb(${props => props.theme.mainColorDark}) 100%
   );
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +22,10 @@ export const Container = styled.main`
       ${props => props.theme.mainColorMedium}
     ) !important;
   }
+  }
 `;
+
+export const Container = styled.main``;
 
 export const GlassContainer = styled.div`
   padding: 3rem;

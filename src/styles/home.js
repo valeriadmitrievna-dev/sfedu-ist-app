@@ -7,7 +7,7 @@ export const Body = styled.main`
   height: 100vh;
   overflow: hidden;
   @media (max-width: 560px) {
-    height: auto;
+    overflow: auto;
   }
 `;
 
