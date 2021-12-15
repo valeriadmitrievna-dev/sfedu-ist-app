@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router";
-import Loader from "../components/Loader";
+import FullScreenLoader from "../components/FullScreenLoader";
 import { ConfirmService } from "../services/user";
 import { errorMessage } from "../utils";
 import { logIn } from "../redux/root";
@@ -10,7 +10,7 @@ export default function Confirmation() {
   const { token } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   const handleConfirm = async () => {
     try {
       const { data } = await ConfirmService(token);
@@ -26,5 +26,5 @@ export default function Confirmation() {
     }
   };
   useEffect(handleConfirm, []);
-  return <Loader />;
+  return <FullScreenLoader />;
 }

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Picture from "./Picture.jsx";
+import Loader from "./Loader.jsx";
 
-export default function PicturesGrid({ category, pictures }) {
+export default function PicturesGrid({ category, pictures, loading }) {
   return (
     <Container>
       {!!category && <Title>{category}</Title>}
@@ -16,6 +17,7 @@ export default function PicturesGrid({ category, pictures }) {
           ))}
         </Masonry>
       </ResponsiveMasonry>
+      {loading && <Loader />}
     </Container>
   );
 }

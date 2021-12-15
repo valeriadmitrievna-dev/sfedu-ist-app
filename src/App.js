@@ -8,11 +8,12 @@ const App = () => {
   const routes = useRoutes(true);
 
   useEffect(() => {
-    notification.info({
-      message: "Test version",
-      description:
-        "This is test version of project without working with database. Here only used hardcoded data. Wait for updates!",
-    });
+    process.env.REACT_APP_NODE === "production" &&
+      notification.info({
+        message: "Test version",
+        description:
+          "This is test version of project without working with database. Here only used hardcoded data. Wait for updates!",
+      });
   }, []);
 
   return routes;

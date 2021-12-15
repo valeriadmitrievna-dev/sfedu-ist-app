@@ -10,12 +10,10 @@ export default function PictureLayout({ picture }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
-    console.log("open");
     setIsModalVisible(true);
   };
 
   const closeModal = () => {
-    console.log("close");
     setIsModalVisible(false);
   };
 

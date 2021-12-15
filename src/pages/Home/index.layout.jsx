@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as H from "../../styles/home";
 import MainHeader from "../../components/MainHeader";
 import PicturesGrid from "../../components/PicturesGrid";
-import { posts } from "../../prefabs";
 
-export default function HomeLayout() {
+export default function HomeLayout({ pictures, loading, handleCheckScroll }) {
   return (
     <H.Body>
       <MainHeader />
-      <H.Content>
-        <PicturesGrid pictures={posts} />
+      <H.Content onScroll={handleCheckScroll}>
+        <PicturesGrid pictures={pictures} loading={loading} />
       </H.Content>
     </H.Body>
   );
