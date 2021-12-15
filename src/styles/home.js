@@ -6,6 +6,9 @@ export const Body = styled.main`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  @media (max-width: 560px) {
+    height: auto;
+  }
 `;
 
 export const Header = styled.header`
@@ -15,6 +18,10 @@ export const Header = styled.header`
   align-items: center;
   gap: 2rem;
   /* border-bottom: 0.2rem solid #fff; */
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    position: relative;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -25,11 +32,11 @@ export const SearchContainer = styled.div`
   padding: 1rem;
   background-color: #fff;
   border-radius: 0.8rem;
-  width: 40rem;
   max-width: 40rem;
   transition: 0.5s ease-in-out, gap 0.1s;
   max-width: 4rem;
   overflow: hidden;
+  width: 35rem;
   input {
     max-width: 0;
     transition: 0.5s;
@@ -45,6 +52,14 @@ export const SearchContainer = styled.div`
     input {
       max-width: 100%;
     }
+  }
+  @media (max-width: 920px) {
+    width: auto;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    order: 2;
   }
 `;
 
@@ -75,6 +90,9 @@ export const Content = styled.div`
   padding: 2rem;
   overflow-y: auto;
   height: calc(100vh - 8rem);
+  @media (max-width: 560px) {
+    height: auto;
+  }
 `;
 
 export const Logo = styled.div`
@@ -89,10 +107,23 @@ export const Logo = styled.div`
     height: 5rem;
     margin-bottom: 0.5rem;
   }
+
+  @media (max-width: 560px) {
+    gap: 0.8rem;
+    font-size: 2.2rem;
+    svg {
+      width: 4rem;
+      height: 4rem;
+      margin-bottom: 0.2rem;
+    }
+  }
 `;
 
 export const User = styled.div`
   position: relative;
+  @media (max-width: 560px) {
+    position: static;
+  }
 `;
 
 export const UserLabel = styled.div`
@@ -106,6 +137,9 @@ export const UserLabel = styled.div`
   ${({ opened }) => opened && "background: rgba(255, 255, 255, 0.2);"}
   &:hover {
     background: rgba(255, 255, 255, 0.2);
+  }
+  @media (max-width: 560px) {
+    padding: 0;
   }
 `;
 
@@ -121,6 +155,13 @@ export const UserBody = styled(ToggledVisibleContainer)`
   min-width: 100%;
   overflow: hidden;
   min-width: 20rem;
+  @media (max-width: 560px) {
+    right: 2rem;
+    top: 7rem;
+    max-width: calc(100vw - 4rem);
+    backdrop-filter: none;
+    background: rgb(255, 255, 255);
+  }
 `;
 
 export const UserBodyLink = styled.p`
@@ -129,12 +170,12 @@ export const UserBodyLink = styled.p`
   gap: 1rem;
   padding: 1rem;
   margin: 0;
-  color: #292D32;
+  color: #292d32;
   svg {
     width: 2rem;
     height: 2rem;
     path {
-      stroke: #292D32;
+      stroke: #292d32;
     }
   }
   font-size: 1.6rem;
@@ -159,6 +200,10 @@ export const Avatar = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  @media (max-width: 560px) {
+    width: 5rem;
+    height: 5rem;
+  }
 `;
 
 export const Username = styled.p`
@@ -166,6 +211,9 @@ export const Username = styled.p`
   font-size: 1.8rem;
   font-weight: 600;
   color: #fff;
+  @media (max-width: 560px) {
+    display: none;
+  }
 `;
 
 export const Notifications = styled.div`
@@ -173,6 +221,10 @@ export const Notifications = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  @media (max-width: 768px) {
+    margin-left: auto;
+    position: static;
+  }
 `;
 
 export const NotificationsButton = styled.button`
