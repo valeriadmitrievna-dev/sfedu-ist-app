@@ -66,7 +66,7 @@ export default function PictureLayout({ picture }) {
         </P.ModalContent>
       </Modal>
       <P.Container onClick={showModal}>
-        <Image src={picture.image} alt={picture.title} />
+        <Image big src={picture.image} alt={picture.title} />
         <P.Overlay>
           <P.OwnerName>
             <Link to={`/user/${picture.owner.short}`}>

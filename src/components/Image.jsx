@@ -10,6 +10,7 @@ export const Container = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  ${({ big }) => big && "min-height: 8rem;"}
 `;
 
 const rotate = keyframes`
@@ -38,14 +39,15 @@ export const Loader = styled.div`
     width: 2rem;
     height: 2rem;
     animation: ${rotate} 1s infinite linear;
+    display: block;
   }
 `;
 
-export default function Image({ src, alt = "" }) {
+export default function Image({ src, alt = "", big }) {
   const [loading, setLoading] = useState(1);
 
   return (
-    <Container>
+    <Container big={big}>
       {!!loading && (
         <Loader>
           <span></span>
