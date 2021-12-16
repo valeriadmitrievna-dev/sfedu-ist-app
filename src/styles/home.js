@@ -194,7 +194,7 @@ export const Avatar = styled.div`
   height: 4rem;
   border-radius: 1rem;
   overflow: hidden;
-  border: 2px solid #fff;
+  /* border: 2px solid #fff; */
   img {
     width: 100%;
     height: 100%;

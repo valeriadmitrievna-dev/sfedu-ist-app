@@ -38,15 +38,17 @@ export default function MainHeader() {
   };
 
   return (
-    <MainHeaderLayout
-      isNotificationsOpened={isNotificationsOpened}
-      toggleNotificationsOpened={toggleNotificationsOpened}
-      isUserBodyOpened={isUserBodyOpened}
-      toggleUserBodyOpened={toggleUserBodyOpened}
-      notificationsBody={notificationsBody}
-      userBody={userBody}
-      handleLogout={handleLogout}
-      user={user}
-    />
+    !!user && (
+      <MainHeaderLayout
+        isNotificationsOpened={isNotificationsOpened}
+        toggleNotificationsOpened={toggleNotificationsOpened}
+        isUserBodyOpened={isUserBodyOpened}
+        toggleUserBodyOpened={toggleUserBodyOpened}
+        notificationsBody={notificationsBody}
+        userBody={userBody}
+        handleLogout={handleLogout}
+        user={user}
+      />
+    )
   );
 }

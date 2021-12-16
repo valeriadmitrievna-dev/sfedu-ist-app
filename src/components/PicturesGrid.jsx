@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Picture from "./Picture.jsx";
