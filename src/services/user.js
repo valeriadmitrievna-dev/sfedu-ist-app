@@ -17,3 +17,12 @@ export const ConfirmService = async token => {
     return err.response;
   }
 };
+
+export const LogoutService = async () => {
+  try {
+    const response = await API.get("/user/logout");
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};

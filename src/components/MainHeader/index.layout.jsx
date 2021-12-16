@@ -16,6 +16,7 @@ export default function MainHeaderLayout({
   toggleUserBodyOpened,
   notificationsBody,
   userBody,
+  handleLogout,
 }) {
   return (
     <H.Header>
@@ -62,7 +63,7 @@ export default function MainHeaderLayout({
           <H.UserBodyLink>
             <User /> Profile
           </H.UserBodyLink>
-          <H.UserBodyLink>
+          <H.UserBodyLink onClick={handleLogout}>
             <Logout /> Log out
           </H.UserBodyLink>
         </H.UserBody>

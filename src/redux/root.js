@@ -10,9 +10,12 @@ const rootSlice = createSlice({
     logIn: state => {
       state.isAuth = true;
     },
+    logOut: state => {
+      state.isAuth = false;
+    },
   },
 });
 
 const rootReducer = rootSlice.reducer;
-export const { logIn } = rootSlice.actions;
+export const { logIn, logOut } = rootSlice.actions;
 export default rootReducer;
