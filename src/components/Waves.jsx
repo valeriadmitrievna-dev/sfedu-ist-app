@@ -42,16 +42,25 @@ const WavesContainer = styled.div`
   bottom: 0;
   height: 45vh;
   width: 100%;
+  @media (max-width: 560px) {
+    height: 30vh;
+  }
 `;
 const WavesBack = styled.div`
   background-color: ${props => props.theme.textColor};
   height: 25vh;
+  @media (max-width: 560px) {
+    height: 20vh;
+  }
 `;
 const WavesBody = styled.svg`
   position: relative;
   width: 100%;
   margin-bottom: -7px;
   height: 20vh;
+  @media (max-width: 560px) {
+    height: 10vh;
+  }
   .parallax > use {
     animation: ${move_forever} 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
   }

@@ -6,7 +6,7 @@ import { GlobalStyle } from "./styles/global";
 
 const App = () => {
   const { isAuth } = useSelector(state => state.root);
-  const routes = useRoutes(true);
+  const routes = useRoutes(isAuth);
 
   useEffect(() => {
     process.env.REACT_APP_NODE === "production" &&

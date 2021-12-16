@@ -25,16 +25,17 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const Container = styled.main``;
-
 export const GlassContainer = styled.div`
   padding: 3rem;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 2rem;
   backdrop-filter: blur(10px);
   width: ${({ width }) => width || "60rem"};
   box-shadow: 0 0.5rem 1.6rem 0
     rgba(${props => props.theme.mainColorMedium}, 0.2);
+  @media (max-width: 560px) {
+    margin: 1rem;
+  }
 `;
 
 export const Button = styled.button`

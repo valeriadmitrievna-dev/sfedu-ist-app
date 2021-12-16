@@ -5,7 +5,6 @@ import Index from "./pages/Index.jsx";
 import SignIn from "./pages/SignIn/index.jsx";
 import SignUp from "./pages/SignUp/index.jsx";
 import Confirmation from "./pages/Confirmation";
-import { Container } from "./styles/global.js";
 import Home from "./pages/Home/index.jsx";
 
 export const useRoutes = isAuth => {

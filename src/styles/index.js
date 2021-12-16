@@ -24,7 +24,7 @@ export const LogoText = styled.h1`
   position: relative;
   z-index: 1;
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 0.4rem;
@@ -33,11 +33,14 @@ export const LogoText = styled.h1`
     bottom: -1rem;
     z-index: -1;
   }
+  margin: 0;
 `;
 
 export const MainText = styled.p`
   color: #fff;
   text-align: center;
+  font-size: 1.8rem;
+  line-height: 140%;
 `;
 
 export const Footer = styled.footer`

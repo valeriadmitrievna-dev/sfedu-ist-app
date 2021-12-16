@@ -39,11 +39,15 @@ export const InputGroup = styled.div`
     font-size: 1.8rem;
     color: rgb(${props => props.theme.mainColorMedium});
     letter-spacing: 0.05em;
-    padding-bottom: .2rem;
+    padding-bottom: 0.2rem;
+  }
+  @media (max-width: 560px) {
+    width: 100%;
   }
 `;
 
 export const Label = styled.label`
+  display: block;
   font-size: 1.2rem;
   margin-bottom: 0.7rem;
   opacity: 0.8;
