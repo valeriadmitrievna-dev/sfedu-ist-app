@@ -21,6 +21,7 @@ const LoaderContainer = styled.section`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
 `;
 
 const bounce = keyframes`
@@ -64,5 +65,5 @@ const LoaderSpiner = styled.span`
   display: inline-block;
   animation: ${rotation} 1s linear infinite;
   margin-top: 5px;
-	margin-left: 1px;
+  margin-left: 1px;
 `;
