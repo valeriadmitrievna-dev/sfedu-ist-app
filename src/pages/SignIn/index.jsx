@@ -4,10 +4,12 @@ import { errorMessage, warningMessage } from "../../utils";
 import SignInLayout from "./index.layout";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/root";
+import FullScreenLoader from "../../components/FullScreenLoader";
 
 export default function SignIn() {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleUpdateCredentials = e => {
     setCredentials(props => ({
@@ -23,6 +25,7 @@ export default function SignIn() {
     } else if (!credentials.password?.trim().length) {
       warningMessage("Password is required");
     } else {
+      setLoading(true);
       try {
         const { data } = await SignInService(credentials);
         if (data?.token) {
@@ -34,13 +37,17 @@ export default function SignIn() {
       } catch (error) {
         errorMessage("Service unavailable");
       }
+      setLoading(false);
     }
   };
   return (
-    <SignInLayout
-      credentials={credentials}
-      handleUpdateCredentials={handleUpdateCredentials}
-      handleSubmit={handleSubmit}
-    />
+    <>
+      {loading && <FullScreenLoader />}
+      <SignInLayout
+        credentials={credentials}
+        handleUpdateCredentials={handleUpdateCredentials}
+        handleSubmit={handleSubmit}
+      />
+    </>
   );
 }
