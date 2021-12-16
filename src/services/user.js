@@ -9,6 +9,15 @@ export const SignUpService = async creds => {
   }
 };
 
+export const SignInService = async creds => {
+  try {
+    const response = await API.post("/user/signin", creds);
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};
+
 export const ConfirmService = async token => {
   try {
     const response = await API.post("/user/confirm", { token });
