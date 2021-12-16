@@ -91,6 +91,7 @@ export const ModalContent = styled.div`
 
 export const ModalPictureSection = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 1.6rem;
   @media (max-width: 560px) {
     flex-wrap: wrap;
@@ -100,7 +101,7 @@ export const ModalPictureSection = styled.div`
 export const ModalPicture = styled.div`
   border-radius: 1rem;
   overflow: hidden;
-  width: 50%;
+  width: 100%;
   @media (max-width: 560px) {
     width: auto;
     max-width: 100%;
