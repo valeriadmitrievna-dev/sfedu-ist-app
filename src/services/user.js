@@ -35,3 +35,12 @@ export const LogoutService = async () => {
     return err.response;
   }
 };
+
+export const UserService = async () => {
+  try {
+    const response = await API.get("/user");
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};

@@ -2,13 +2,14 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import MainHeaderLayout from "./index.layout";
 import useOnClickOutside from "../../hooks/use-click-outside";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../redux/root";
 import { LogoutService } from "../../services/user";
 import { errorMessage } from "../../utils";
-import { logOut } from "../../redux/root";
 
 export default function MainHeader() {
   const dispatch = useDispatch();
+  const { user } = useSelector(state => state.root);
   const [isNotificationsOpened, setNotificationsOpened] = useState(false);
   const [isUserBodyOpened, setUserBodyOpened] = useState(false);
 
@@ -45,6 +46,7 @@ export default function MainHeader() {
       notificationsBody={notificationsBody}
       userBody={userBody}
       handleLogout={handleLogout}
+      user={user}
     />
   );
 }

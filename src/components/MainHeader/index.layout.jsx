@@ -8,6 +8,7 @@ import { ReactComponent as Logout } from "../../assets/turnoff.svg";
 import Notification from "../Notification";
 import Image from "../Image";
 import { users } from "../../prefabs";
+import { Link } from "react-router-dom";
 
 export default function MainHeaderLayout({
   isNotificationsOpened,
@@ -17,6 +18,7 @@ export default function MainHeaderLayout({
   notificationsBody,
   userBody,
   handleLogout,
+  user,
 }) {
   return (
     <H.Header>
@@ -55,14 +57,16 @@ export default function MainHeaderLayout({
       <H.User ref={userBody}>
         <H.UserLabel opened={isUserBodyOpened} onClick={toggleUserBodyOpened}>
           <H.Avatar>
-            <Image src="https://sun9-66.userapi.com/impg/eYHwUdFFb8LDHg2sR0aglcxKq9Pz10btuKy18w/sKVRDjXOM_8.jpg?size=1600x1200&quality=96&sign=d1757ee002e6956aff055b3f6d5c7800&type=album" />
+            <Image src={user.avatar} />
           </H.Avatar>
-          <H.Username>Stitch the Cat</H.Username>
+          <H.Username>{user.name}</H.Username>
         </H.UserLabel>
         <H.UserBody opened={isUserBodyOpened}>
-          <H.UserBodyLink>
-            <User /> Profile
-          </H.UserBodyLink>
+          <Link to={`/user/${user.username}`}>
+            <H.UserBodyLink>
+              <User /> Profile
+            </H.UserBodyLink>
+          </Link>
           <H.UserBodyLink onClick={handleLogout}>
             <Logout /> Log out
           </H.UserBodyLink>

@@ -13,9 +13,12 @@ const rootSlice = createSlice({
     logOut: state => {
       state.isAuth = false;
     },
+    setUser: (state, { payload }) => {
+      state.user = payload;
+    },
   },
 });
 
 const rootReducer = rootSlice.reducer;
-export const { logIn, logOut } = rootSlice.actions;
+export const { logIn, logOut, setUser } = rootSlice.actions;
 export default rootReducer;

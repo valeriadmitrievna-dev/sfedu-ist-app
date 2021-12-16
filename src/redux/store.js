@@ -12,5 +12,5 @@ export const store = configureStore({
     root: rootReducer,
   },
   middleware,
-  devTools: process.env.NEXT_PUBLIC_ENV === "development",
+  devTools: process.env.REACT_APP_NODE === "development",
 });
