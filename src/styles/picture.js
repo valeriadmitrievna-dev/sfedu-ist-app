@@ -101,7 +101,17 @@ export const ModalPictureSection = styled.div`
 export const ModalPicture = styled.div`
   border-radius: 1rem;
   overflow: hidden;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
+  div {
+    width: auto;
+    height: auto;
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+    }
+  }
   @media (max-width: 560px) {
     width: auto;
     max-width: 100%;
