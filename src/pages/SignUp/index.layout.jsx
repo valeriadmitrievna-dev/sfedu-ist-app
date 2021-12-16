@@ -26,6 +26,15 @@ export default function SignUpLayout({
             />
           </A.InputGroup>
           <A.InputGroup>
+            <A.Label htmlFor="name">name</A.Label>
+            <input
+              type="text"
+              id="name"
+              value={credentials?.name || ""}
+              onChange={handleUpdateCredentials}
+            />
+          </A.InputGroup>
+          <A.InputGroup>
             <A.Label htmlFor="username">username</A.Label>
             <input
               type="text"

@@ -22,6 +22,8 @@ export default function SignUp() {
       warningMessage("Email is required");
     } else if (!isEmail(credentials.email)) {
       warningMessage("Email is invalid");
+    }  else if (!credentials.name?.trim().length) {
+      warningMessage("Name is required");
     } else if (!credentials.username?.trim().length) {
       warningMessage("Username is required");
     } else if (credentials.username?.length < 6) {
@@ -31,7 +33,7 @@ export default function SignUp() {
         "Username can contain only letters, numbers and underscore"
       );
     } else if (!credentials.password?.trim().length) {
-      warningMessage("Passwword is required");
+      warningMessage("Password is required");
     } else if (credentials.password?.length < 6) {
       warningMessage("Password length should be 6 or greater");
     } else {
