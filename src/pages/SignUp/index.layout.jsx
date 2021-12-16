@@ -24,6 +24,10 @@ export default function SignUpLayout({
               value={credentials?.email || ""}
               onChange={handleUpdateCredentials}
             />
+            <A.Info>
+              * Please use your real email, you will need it later to verify
+              your account
+            </A.Info>
           </A.InputGroup>
           <A.InputGroup>
             <A.Label htmlFor="name">name</A.Label>

@@ -40,6 +40,7 @@ export const InputGroup = styled.div`
     color: rgb(${props => props.theme.mainColorMedium});
     letter-spacing: 0.05em;
     padding-bottom: 0.2rem;
+    line-height: 120%;
   }
   @media (max-width: 560px) {
     width: 100%;
@@ -52,4 +53,10 @@ export const Label = styled.label`
   margin-bottom: 0.7rem;
   opacity: 0.8;
   text-transform: capitalize;
+`;
+
+export const Info = styled.p`
+  margin: 0;
+  font-size: 1.2rem;
+  margin-top: 0.7rem;
 `;
