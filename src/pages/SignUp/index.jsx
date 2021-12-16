@@ -3,10 +3,12 @@ import { errorMessage, warningMessage } from "../../utils";
 import SignUpLayout from "./index.layout";
 import { isEmail } from "validator";
 import { SignUpService } from "../../services/user";
+import FullScreenLoader from "../../components/FullScreenLoader";
 
 export default function SignUp() {
   const [credentials, setCredentials] = useState({});
   const [isSended, setSended] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleUpdateCredentials = e => {
     setCredentials(props => ({
@@ -22,7 +24,7 @@ export default function SignUp() {
       warningMessage("Email is required");
     } else if (!isEmail(credentials.email)) {
       warningMessage("Email is invalid");
-    }  else if (!credentials.name?.trim().length) {
+    } else if (!credentials.name?.trim().length) {
       warningMessage("Name is required");
     } else if (!credentials.username?.trim().length) {
       warningMessage("Username is required");
@@ -37,6 +39,7 @@ export default function SignUp() {
     } else if (credentials.password?.length < 6) {
       warningMessage("Password length should be 6 or greater");
     } else {
+      setLoading(true);
       try {
         const { data } = await SignUpService(credentials);
         if (data.success) {
@@ -47,15 +50,19 @@ export default function SignUp() {
       } catch (error) {
         errorMessage("Service unavailable");
       }
+      setLoading(false);
     }
   };
 
   return (
-    <SignUpLayout
-      isSended={isSended}
-      credentials={credentials}
-      handleUpdateCredentials={handleUpdateCredentials}
-      handleSubmit={handleSubmit}
-    />
+    <>
+      {loading && <FullScreenLoader />}
+      <SignUpLayout
+        isSended={isSended}
+        credentials={credentials}
+        handleUpdateCredentials={handleUpdateCredentials}
+        handleSubmit={handleSubmit}
+      />
+    </>
   );
 }
