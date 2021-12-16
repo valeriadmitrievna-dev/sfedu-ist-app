@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     rgb(${props => props.theme.mainColorLight}) 0%,
     rgb(${props => props.theme.mainColorDark}) 100%
   );
+  transition: background 1s ease-out; 
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -22,6 +23,9 @@ export const GlobalStyle = createGlobalStyle`
       ${props => props.theme.mainColorMedium}
     ) !important;
   }
+  }
+  a:hover {
+    color: #fff;
   }
 `;
 
@@ -59,4 +63,13 @@ export const ToggledVisibleContainer = styled.div`
   opacity: ${({ opened }) => (opened ? "1" : "0")};
   visibility: ${({ opened }) => (opened ? "visible" : "hidden")};
   transform: translateY(${({ opened }) => (opened ? "0" : "-10rem")});
+`;
+
+export const ComingSoon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
 `;

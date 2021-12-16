@@ -7,7 +7,7 @@ export default function Home() {
   const [pictures, setPictures] = useState([]);
   const [length, setLength] = useState(posts.length);
   const [loading, setLoading] = useState(false);
-  const step = 10;
+  const step = 20;
 
   const handleLoadMore = () => {
     if (pictures.length < length && !loading) {

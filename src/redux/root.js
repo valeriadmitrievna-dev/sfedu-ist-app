@@ -5,6 +5,11 @@ const rootSlice = createSlice({
   initialState: {
     user: null,
     isAuth: !!localStorage.getItem("access token"),
+    theme: JSON.parse(localStorage.getItem("theme")) || {
+      mainColorDark: "51, 168, 161",
+      mainColorMedium: "67, 139, 249",
+      mainColorLight: "176, 166, 229",
+    },
   },
   reducers: {
     logIn: state => {
@@ -16,9 +21,12 @@ const rootSlice = createSlice({
     setUser: (state, { payload }) => {
       state.user = payload;
     },
+    changeTheme: (state, { payload }) => {
+      state.theme = payload;
+    },
   },
 });
 
 const rootReducer = rootSlice.reducer;
-export const { logIn, logOut, setUser } = rootSlice.actions;
+export const { logIn, logOut, setUser, changeTheme } = rootSlice.actions;
 export default rootReducer;

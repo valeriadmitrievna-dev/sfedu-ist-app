@@ -4,6 +4,7 @@ import { ReactComponent as Search } from "../../assets/search.svg";
 import { ReactComponent as Logo } from "../../assets/whitedlogo.svg";
 import { ReactComponent as Bell } from "../../assets/bell.svg";
 import { ReactComponent as User } from "../../assets/user.svg";
+import { ReactComponent as Settings } from "../../assets/setting.svg";
 import { ReactComponent as Logout } from "../../assets/turnoff.svg";
 import Notification from "../Notification";
 import Image from "../Image";
@@ -22,10 +23,12 @@ export default function MainHeaderLayout({
 }) {
   return (
     <H.Header>
-      <H.Logo>
-        <Logo />
-        Imagify
-      </H.Logo>
+      <Link to="/home">
+        <H.Logo>
+          <Logo />
+          Imagify
+        </H.Logo>
+      </Link>
       <H.SearchContainer>
         <H.SearchLabel htmlFor="search">
           <Search />
@@ -65,6 +68,11 @@ export default function MainHeaderLayout({
           <Link to={`/user/${user.username}`}>
             <H.UserBodyLink>
               <User /> Profile
+            </H.UserBodyLink>
+          </Link>
+          <Link to="/settings">
+            <H.UserBodyLink>
+              <Settings /> Settings
             </H.UserBodyLink>
           </Link>
           <H.UserBodyLink onClick={handleLogout}>

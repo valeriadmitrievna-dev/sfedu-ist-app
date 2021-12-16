@@ -60,6 +60,10 @@ export const SearchContainer = styled.div`
     width: 100%;
     max-width: 100%;
     order: 2;
+    gap: 1rem;
+    input {
+      max-width: 100%;
+    }
   }
 `;
 
@@ -107,6 +111,9 @@ export const Logo = styled.div`
     height: 5rem;
     margin-bottom: 0.5rem;
   }
+  &:hover {
+    color: #fff;
+  }
 
   @media (max-width: 560px) {
     gap: 0.8rem;
@@ -134,6 +141,7 @@ export const UserLabel = styled.div`
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   transition: 0.3s;
+  cursor: pointer;
   ${({ opened }) => opened && "background: rgba(255, 255, 255, 0.2);"}
   &:hover {
     background: rgba(255, 255, 255, 0.2);

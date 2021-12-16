@@ -8,9 +8,10 @@ import { UserService } from "./services/user";
 import { useDispatch } from "react-redux";
 import { logOut, setUser } from "./redux/root";
 import FullScreenLoader from "./components/FullScreenLoader";
+import { ThemeProvider } from "styled-components";
 
 const App = () => {
-  const { isAuth } = useSelector(state => state.root);
+  const { isAuth, user, theme } = useSelector(state => state.root);
   const routes = useRoutes(isAuth);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -46,10 +47,18 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <ThemeProvider
+      theme={{
+        mainColorDark: theme.mainColorDark,
+        mainColorMedium: theme.mainColorMedium,
+        mainColorLight: theme.mainColorLight,
+        textColor: "#fff",
+        wavesColor: "255, 255, 255",
+      }}
+    >
       <GlobalStyle />
-      {loading ? <FullScreenLoader /> : routes}
-    </>
+      {loading || (isAuth && !user) ? <FullScreenLoader /> : routes}
+    </ThemeProvider>
   );
 };
 
