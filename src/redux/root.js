@@ -26,7 +26,7 @@ const rootSlice = createSlice({
     },
     uploadNewPicture: (state, { payload }) => {
       state.user.pictures = !!state.user.pictures?.length
-        ? [...state.user.pictures, payload]
+        ? [payload, ...state.user.pictures]
         : [payload];
     },
   },
