@@ -84,6 +84,12 @@ export const Tools = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    button {
+      padding: 1rem;
+    }
+  }
 `;
 
 export const AddPicture = styled(Button)`
