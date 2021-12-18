@@ -239,9 +239,12 @@ export const NotificationsButton = styled.button`
   display: block;
   width: 4rem;
   height: 4rem;
-  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 0.8rem;
   transition: 0.3s;
+  border: 2px solid #fff;
   > svg {
     width: 3rem;
     height: 3rem;

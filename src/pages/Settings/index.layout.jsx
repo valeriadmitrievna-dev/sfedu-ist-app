@@ -3,9 +3,11 @@ import Image from "../../components/Image";
 import MainHeader from "../../components/MainHeader";
 import * as H from "../../styles/home";
 import * as S from "../../styles/settings";
-import { Input } from "antd";
+import * as P from "../../styles/picture";
+import { Input, Modal } from "antd";
 import { Button, ComingSoon } from "../../styles/global";
-import { ReactComponent as Checkmark } from "../../assets/checkmark.svg";
+import { Upload } from "antd";
+import ImgCrop from "antd-img-crop";
 const { TextArea } = Input;
 
 export default function SettingsLayout({
@@ -14,6 +16,15 @@ export default function SettingsLayout({
   changeTab,
   theme,
   handleChangeTheme,
+  isModalOpened,
+  openModal,
+  closeModal,
+  fileList,
+  onChangeFile,
+  onPreview,
+  profileEdit,
+  handleProfileEdit,
+  handleUpdateProfile,
 }) {
   return (
     <H.Body>
@@ -34,7 +45,19 @@ export default function SettingsLayout({
               Help
             </S.MenuItem>
           </S.Menu>
-          {activeTab === 1 && efitProfile(user)}
+          {activeTab === 1 &&
+            efitProfile(
+              user,
+              fileList,
+              onChangeFile,
+              onPreview,
+              isModalOpened,
+              openModal,
+              closeModal,
+              profileEdit,
+              handleProfileEdit,
+              handleUpdateProfile
+            )}
           {activeTab === 2 && changePassword()}
           {activeTab === 3 && commonSettings(theme, handleChangeTheme)}
           {activeTab === 4 && help()}
@@ -44,29 +67,82 @@ export default function SettingsLayout({
   );
 }
 
-const efitProfile = user => (
+const efitProfile = (
+  user,
+  fileList,
+  onChangeFile,
+  onPreview,
+  isModalOpened,
+  openModal,
+  closeModal,
+  profileEdit,
+  handleProfileEdit,
+  handleUpdateProfile
+) => (
   <S.Content>
+    <Modal
+      title={<P.ModalTitle>Upload new avatar</P.ModalTitle>}
+      visible={isModalOpened}
+      onCancel={closeModal}
+      onOk={closeModal}
+      centered
+      footer={false}
+      width={320}
+    >
+      <P.ModalContent>
+        <ImgCrop>
+          <Upload
+            accept="image/*"
+            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            listType="picture-card"
+            fileList={fileList}
+            onChange={onChangeFile}
+            onPreview={onPreview}
+          >
+            {fileList.length < 1 && "+ Upload"}
+          </Upload>
+        </ImgCrop>
+      </P.ModalContent>
+    </Modal>
     <S.Flex>
       <S.ProfilePhoto>
-        <Image src={user.avatar} />
+        <Image src={fileList[0]?.thumbUrl || user.avatar} />
       </S.ProfilePhoto>
       <div>
         <H.Username>{user.username}</H.Username>
-        <S.Change>Change profile photo</S.Change>
+        <S.Change onClick={openModal}>Change profile photo</S.Change>
       </div>
     </S.Flex>
     <S.Line />
     <S.InputGroup>
       <S.Label htmlFor="name">name</S.Label>
-      <input type="text" id="name" placeholder={user.name} />
+      <input
+        type="text"
+        id="name"
+        placeholder={user.name}
+        value={profileEdit.name || ''}
+        onChange={handleProfileEdit}
+      />
     </S.InputGroup>
     <S.InputGroup>
       <S.Label htmlFor="username">username</S.Label>
-      <input type="text" id="username" placeholder={user.username} />
+      <input
+        type="text"
+        id="username"
+        placeholder={user.username}
+        value={profileEdit.username || ''}
+        onChange={handleProfileEdit}
+      />
     </S.InputGroup>
     <S.InputGroup>
       <S.Label htmlFor="website">website</S.Label>
-      <input type="text" id="website" placeholder={user.website || "Website"} />
+      <input
+        type="text"
+        id="website"
+        placeholder={user.website || "Website"}
+        value={profileEdit.website || ''}
+        onChange={handleProfileEdit}
+      />
     </S.InputGroup>
     <S.InputGroup>
       <S.Label htmlFor="about">about</S.Label>
@@ -75,9 +151,18 @@ const efitProfile = user => (
         autoSize={{ minRows: 2, maxRows: 4 }}
         type="text"
         id="about"
+        value={profileEdit.about || ''}
+        onChange={handleProfileEdit}
       />
     </S.InputGroup>
-    <Button>Save changes</Button>
+    <Button
+      onClick={handleUpdateProfile}
+      disabled={
+        !Object.values(profileEdit).some(v => v.length > 0) && !fileList[0]
+      }
+    >
+      Save changes
+    </Button>
   </S.Content>
 );
 

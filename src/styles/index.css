@@ -111,3 +111,16 @@ a {
   padding: 0;
   font-size: 1.4rem;
 }
+
+/* upload picture */
+
+.ant-upload-list-picture-card .ant-upload-list-item {
+  padding: 0;
+  border: none;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.ant-upload-list-picture-card-container .ant-tooltip {
+  display: none;
+}

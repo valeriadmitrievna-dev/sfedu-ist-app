@@ -77,6 +77,7 @@ export const InputGroup = styled.div`
     max-width: 40rem;
     transition: 0.3s;
     color: #fff;
+    line-height: 150%;
     &::placeholder {
       color: rgba(255, 255, 255, 0.4);
     }
@@ -149,3 +150,32 @@ export const Theme = styled.div`
     active && "box-shadow: 0 0 0 .5rem rgba(255, 255, 255, 0.5);"}
 `;
 
+export const Upload = styled.div`
+  label {
+    width: 12rem;
+    height: 12rem;
+    background-color: rgba(${props => props.theme.mainColorMedium}, 0.5);
+    border: 2px solid rgb(${props => props.theme.mainColorMedium});
+    border-radius: 4px;
+    color: #fff;
+    font-family: "Comfortaa";
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: rgba(${props => props.theme.mainColorMedium}, 0.7);
+    }
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  input {
+    display: none;
+  }
+`;

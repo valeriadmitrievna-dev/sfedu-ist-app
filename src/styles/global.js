@@ -27,6 +27,19 @@ export const GlobalStyle = createGlobalStyle`
   a:hover {
     color: #fff;
   }
+  .ant-upload.ant-upload-select-picture-card {
+    text-align: center;
+    vertical-align: top;
+    background-color: rgba(${props => props.theme.mainColorMedium}, 0.5);
+    border: 2px solid rgb(${props => props.theme.mainColorMedium}) !important;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    .ant-upload {
+      color: #fff;
+      font-family: 'Comfortaa';
+    }
+}
 `;
 
 export const GlassContainer = styled.div`
@@ -55,6 +68,14 @@ export const Button = styled.button`
   &:hover {
     background: rgba(${props => props.theme.mainColorMedium}, 1);
     color: ${props => props.theme.textColor};
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+    &:hover {
+      background: rgba(${props => props.theme.mainColorMedium}, 0.2);
+      color: rgb(${props => props.theme.mainColorMedium});
+    }
   }
 `;
 

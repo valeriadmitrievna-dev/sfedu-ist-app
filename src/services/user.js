@@ -44,3 +44,16 @@ export const UserService = async () => {
     return err.response;
   }
 };
+
+export const UpdateUserService = async formData => {
+  try {
+    const response = await API.put("/user", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};
