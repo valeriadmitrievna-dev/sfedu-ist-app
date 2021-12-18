@@ -45,6 +45,15 @@ export const UserService = async () => {
   }
 };
 
+export const UserDataService = async username => {
+  try {
+    const response = await API.get(`/user/${username}`);
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};
+
 export const UpdateUserService = async formData => {
   try {
     const response = await API.put("/user", formData, {

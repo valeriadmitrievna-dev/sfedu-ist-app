@@ -95,9 +95,11 @@ export default function UserLayout({
           </U.Avatar>
           <U.Info>
             <U.InfoText>{profile.name}</U.InfoText>
-            <U.InfoLink href={profile.website} target="_blank">
-              {profile.website}
-            </U.InfoLink>
+            {!!profile.website && (
+              <U.InfoLink href={profile.website} target="_blank">
+                {profile.website}
+              </U.InfoLink>
+            )}
             <S.Line m={0.1} />
             <U.InfoText>{profile.about}</U.InfoText>
           </U.Info>
@@ -122,7 +124,7 @@ export default function UserLayout({
             </U.Tools>
           )}
 
-          {!!profile.pictures.length && (
+          {!!profile.pictures?.length && (
             <>
               <S.Line m={2} />
               <PicturesGrid

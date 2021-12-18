@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import UserLayout from "./index.layout";
 import FullScreenLoader from "../../components/FullScreenLoader";
-import { LogoutService } from "../../services/user";
+import { LogoutService, UserDataService } from "../../services/user";
 import { logOut, uploadNewPicture } from "../../redux/root";
 import { errorMessage, warningMessage } from "../../utils";
 import { UploadPictureService } from "../../services/picture";
@@ -83,18 +83,29 @@ export default function User() {
     }
   };
 
+  const handleGetUserData = async () => {
+    try {
+      const { data } = await UserDataService(params.username);
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        setProfile(data);
+      }
+    } catch (error) {
+      errorMessage(error.message);
+    }
+  };
+
   useEffect(() => {
     if (params.username === user.username) {
-      console.log("its me");
       setProfile(user);
     } else {
-      console.log(params.username);
-      console.log("its not me");
+      handleGetUserData();
     }
     setLoading(false);
-  }, [user]);
+  }, [user, params]);
 
-  return loading ? (
+  return loading || !profile ? (
     <FullScreenLoader />
   ) : (
     <UserLayout

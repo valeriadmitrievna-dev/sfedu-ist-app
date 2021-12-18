@@ -25,7 +25,9 @@ const rootSlice = createSlice({
       state.theme = payload;
     },
     uploadNewPicture: (state, { payload }) => {
-      state.user.pictures.push(payload);
+      state.user.pictures = !!state.user.pictures?.length
+        ? [...state.user.pictures, payload]
+        : [payload];
     },
   },
 });
