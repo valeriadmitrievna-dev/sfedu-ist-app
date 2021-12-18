@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/root";
 import { LogoutService } from "../../services/user";
 import { errorMessage } from "../../utils";
+import { useLocation } from "react-router-dom";
 
 export default function MainHeader({ owner }) {
   const dispatch = useDispatch();
+  const location = useLocation()
   const { user } = useSelector(state => state.root);
   const [isNotificationsOpened, setNotificationsOpened] = useState(false);
   const [isUserBodyOpened, setUserBodyOpened] = useState(false);
@@ -36,7 +38,7 @@ export default function MainHeader({ owner }) {
       errorMessage("Service unavailable");
     }
   };
-
+  
   return (
     !!user && (
       <MainHeaderLayout
@@ -49,6 +51,7 @@ export default function MainHeader({ owner }) {
         handleLogout={handleLogout}
         user={user}
         owner={owner}
+        location={location}
       />
     )
   );

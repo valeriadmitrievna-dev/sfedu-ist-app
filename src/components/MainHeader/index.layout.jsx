@@ -21,6 +21,7 @@ export default function MainHeaderLayout({
   handleLogout,
   user,
   owner,
+  location,
 }) {
   return (
     <H.Header>
@@ -30,12 +31,14 @@ export default function MainHeaderLayout({
           Imagify
         </H.Logo>
       </Link>
-      <H.SearchContainer>
-        <H.SearchLabel htmlFor="search">
-          <Search />
-        </H.SearchLabel>
-        <H.Search placeholder="Search" id="search" />
-      </H.SearchContainer>
+      {!location.pathname.includes("user") && (
+        <H.SearchContainer>
+          <H.SearchLabel htmlFor="search">
+            <Search />
+          </H.SearchLabel>
+          <H.Search placeholder="Search" id="search" />
+        </H.SearchContainer>
+      )}
       {/* <H.Notifications ref={notificationsBody}>
         <H.NotificationsButton
           opened={isNotificationsOpened}
