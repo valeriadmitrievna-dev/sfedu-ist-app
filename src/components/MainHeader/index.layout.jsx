@@ -36,7 +36,7 @@ export default function MainHeaderLayout({
         </H.SearchLabel>
         <H.Search placeholder="Search" id="search" />
       </H.SearchContainer>
-      <H.Notifications ref={notificationsBody}>
+      {/* <H.Notifications ref={notificationsBody}>
         <H.NotificationsButton
           opened={isNotificationsOpened}
           onClick={toggleNotificationsOpened}
@@ -57,7 +57,7 @@ export default function MainHeaderLayout({
             />
           ))}
         </H.NotificatiosBody>
-      </H.Notifications>
+      </H.Notifications> */}
       {!owner && (
         <H.User ref={userBody}>
           <H.UserLabel opened={isUserBodyOpened} onClick={toggleUserBodyOpened}>
