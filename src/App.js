@@ -37,15 +37,6 @@ const App = () => {
     }
   }, [isAuth]);
 
-  useEffect(() => {
-    process.env.REACT_APP_NODE === "production" &&
-      notification.info({
-        message: "Test version",
-        description:
-          "This is test version of project without working with database. Here only used hardcoded data. Wait for updates!",
-      });
-  }, []);
-
   return (
     <ThemeProvider
       theme={{
