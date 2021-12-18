@@ -20,6 +20,7 @@ export default function MainHeaderLayout({
   userBody,
   handleLogout,
   user,
+  owner,
 }) {
   return (
     <H.Header>
@@ -57,29 +58,31 @@ export default function MainHeaderLayout({
           ))}
         </H.NotificatiosBody>
       </H.Notifications>
-      <H.User ref={userBody}>
-        <H.UserLabel opened={isUserBodyOpened} onClick={toggleUserBodyOpened}>
-          <H.Avatar>
-            <Image src={user.avatar} />
-          </H.Avatar>
-          <H.Username>{user.name}</H.Username>
-        </H.UserLabel>
-        <H.UserBody opened={isUserBodyOpened}>
-          <Link to={`/user/${user.username}`}>
-            <H.UserBodyLink>
-              <User /> Profile
+      {!owner && (
+        <H.User ref={userBody}>
+          <H.UserLabel opened={isUserBodyOpened} onClick={toggleUserBodyOpened}>
+            <H.Avatar>
+              <Image src={user.avatar} />
+            </H.Avatar>
+            <H.Username>{user.name}</H.Username>
+          </H.UserLabel>
+          <H.UserBody opened={isUserBodyOpened}>
+            <Link to={`/user/${user.username}`}>
+              <H.UserBodyLink>
+                <User /> Profile
+              </H.UserBodyLink>
+            </Link>
+            <Link to="/settings">
+              <H.UserBodyLink>
+                <Settings /> Settings
+              </H.UserBodyLink>
+            </Link>
+            <H.UserBodyLink onClick={handleLogout}>
+              <Logout /> Log out
             </H.UserBodyLink>
-          </Link>
-          <Link to="/settings">
-            <H.UserBodyLink>
-              <Settings /> Settings
-            </H.UserBodyLink>
-          </Link>
-          <H.UserBodyLink onClick={handleLogout}>
-            <Logout /> Log out
-          </H.UserBodyLink>
-        </H.UserBody>
-      </H.User>
+          </H.UserBody>
+        </H.User>
+      )}
     </H.Header>
   );
 }

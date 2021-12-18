@@ -7,7 +7,7 @@ import { logOut } from "../../redux/root";
 import { LogoutService } from "../../services/user";
 import { errorMessage } from "../../utils";
 
-export default function MainHeader() {
+export default function MainHeader({ owner }) {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.root);
   const [isNotificationsOpened, setNotificationsOpened] = useState(false);
@@ -48,6 +48,7 @@ export default function MainHeader() {
         userBody={userBody}
         handleLogout={handleLogout}
         user={user}
+        owner={owner}
       />
     )
   );

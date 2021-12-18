@@ -63,7 +63,7 @@ export const Line = styled.hr`
   height: 1px;
   width: 100%;
   background: rgba(255, 255, 255, 0.2);
-  margin: 2rem 0;
+  margin: ${({ m }) => m || 2}rem 0;
 `;
 
 export const InputGroup = styled.div`

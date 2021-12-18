@@ -21,13 +21,13 @@ export default function PictureLayout({ picture }) {
     <>
       <Modal
         title={
-          <Link to={`/user/${picture.owner.short}`}>
+          <Link to={`/user/${picture.owner.username}`}>
             <P.ModalTitle>
               <P.ModalAvatar>
                 <Image src={picture.owner.avatar} />
               </P.ModalAvatar>
               <P.ModalUserInfo>
-                <span>@{picture.owner.short}</span>
+                <span>@{picture.owner.username}</span>
                 <p>{picture.owner.name}</p>
               </P.ModalUserInfo>
             </P.ModalTitle>
@@ -43,7 +43,7 @@ export default function PictureLayout({ picture }) {
         <P.ModalContent>
           <P.ModalPictureSection>
             <P.ModalPicture>
-              <Image src={picture.image} alt={picture.title} />
+              <Image src={picture.source} alt={picture.title} />
             </P.ModalPicture>
             <P.ModalPictureInfo>
               <P.ModalPictureDate>
@@ -53,28 +53,28 @@ export default function PictureLayout({ picture }) {
               <P.ModalPictureDescription>
                 {picture.description}
               </P.ModalPictureDescription>
-              <P.ModalPictureActions>
+              {/* <P.ModalPictureActions>
                 <P.Likes liked={false} dark>
                   <Heart />
                   {picture.likes}
                 </P.Likes>
-              </P.ModalPictureActions>
+              </P.ModalPictureActions> */}
             </P.ModalPictureInfo>
           </P.ModalPictureSection>
         </P.ModalContent>
       </Modal>
       <P.Container onClick={showModal}>
-        <Image big src={picture.image} alt={picture.title} />
+        <Image big src={picture.source} alt={picture.title} />
         <P.Overlay>
           <P.OwnerName>
-            <Link to={`/user/${picture.owner.short}`}>
-              @{picture.owner.short}
+            <Link to={`/user/${picture.owner.username}`}>
+              @{picture.owner.username}
             </Link>
           </P.OwnerName>
-          <P.Likes liked={true}>
+          {/* <P.Likes liked={true}>
             <Heart />
             {picture.likes}
-          </P.Likes>
+          </P.Likes> */}
         </P.Overlay>
       </P.Container>
     </>

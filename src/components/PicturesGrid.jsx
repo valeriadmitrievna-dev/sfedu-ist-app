@@ -4,16 +4,23 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Picture from "./Picture.jsx";
 import Loader from "./Loader.jsx";
 
-export default function PicturesGrid({ category, pictures, loading }) {
+export default function PicturesGrid({
+  category,
+  pictures,
+  loading,
+  breakpoints,
+}) {
   return (
     <Container>
       {!!category && <Title>{category}</Title>}
       <ResponsiveMasonry
-        columnsCountBreakPoints={{ 0: 1, 320: 2, 768: 4, 1100: 5 }}
+        columnsCountBreakPoints={
+          breakpoints || { 0: 1, 320: 2, 768: 4, 1100: 5 }
+        }
       >
         <Masonry gutter="2rem">
           {pictures.map(p => (
-            <Picture key={p.id} picture={p} />
+            <Picture key={p._id} picture={p} />
           ))}
         </Masonry>
       </ResponsiveMasonry>

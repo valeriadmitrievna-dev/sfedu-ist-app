@@ -4,9 +4,8 @@ import MainHeader from "../../components/MainHeader";
 import * as H from "../../styles/home";
 import * as S from "../../styles/settings";
 import * as P from "../../styles/picture";
-import { Input, Modal } from "antd";
+import { Input, Modal, Upload } from "antd";
 import { Button, ComingSoon } from "../../styles/global";
-import { Upload } from "antd";
 import ImgCrop from "antd-img-crop";
 const { TextArea } = Input;
 

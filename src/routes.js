@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp/index.jsx";
 import Confirmation from "./pages/Confirmation";
 import Home from "./pages/Home/index.jsx";
 import Settings from "./pages/Settings/index.jsx";
+import User from "./pages/User/index.jsx";
 
 export const useRoutes = isAuth => {
   if (isAuth) {
@@ -15,6 +16,9 @@ export const useRoutes = isAuth => {
         <Switch>
           <Route exact path="/home">
             <Home />
+          </Route>
+          <Route exact path="/user/:username">
+            <User />
           </Route>
           <Route exact path="/settings">
             <Settings />
@@ -37,7 +41,7 @@ export const useRoutes = isAuth => {
         <Route exact path="/signup">
           <SignUp />
         </Route>
-        <Route exact path="/user/:token">
+        <Route exact path="/user/confirm/:token">
           <Confirmation />
         </Route>
         <Redirect to="/" />

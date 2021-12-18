@@ -20,8 +20,8 @@ const App = () => {
     setLoading(true);
     try {
       const { data } = await UserService();
-      if (data.user) {
-        dispatch(setUser(data.user));
+      if (!data.error) {
+        dispatch(setUser(data));
       } else throw new Error(data.error);
     } catch (error) {
       errorMessage(error.message || "Service unuvailable");
