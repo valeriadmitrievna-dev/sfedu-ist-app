@@ -4,10 +4,13 @@ import MainHeader from "../../components/MainHeader";
 import * as H from "../../styles/home";
 import * as S from "../../styles/settings";
 import * as P from "../../styles/picture";
-import { Input, Modal, Upload } from "antd";
+import { ReactComponent as Expand } from "../../assets/expand.svg";
+import { Input, Modal, Upload, Collapse } from "antd";
 import { Button, ComingSoon } from "../../styles/global";
 import ImgCrop from "antd-img-crop";
+import useWindowSize from "../../hooks/use-windows-size";
 const { TextArea } = Input;
+const { Panel } = Collapse;
 
 export default function SettingsLayout({
   user,
@@ -25,42 +28,73 @@ export default function SettingsLayout({
   handleProfileEdit,
   handleUpdateProfile,
 }) {
+  const { width } = useWindowSize();
   return (
     <H.Body>
       <MainHeader />
       <H.Content>
-        <S.Container>
-          <S.Menu>
-            <S.MenuItem active={activeTab === 1} onClick={() => changeTab(1)}>
-              Edit profile
-            </S.MenuItem>
-            <S.MenuItem active={activeTab === 2} onClick={() => changeTab(2)}>
-              Change password
-            </S.MenuItem>
-            <S.MenuItem active={activeTab === 3} onClick={() => changeTab(3)}>
-              Common settings
-            </S.MenuItem>
-            <S.MenuItem active={activeTab === 4} onClick={() => changeTab(4)}>
-              Help
-            </S.MenuItem>
-          </S.Menu>
-          {activeTab === 1 &&
-            efitProfile(
-              user,
-              fileList,
-              onChangeFile,
-              onPreview,
-              isModalOpened,
-              openModal,
-              closeModal,
-              profileEdit,
-              handleProfileEdit,
-              handleUpdateProfile
-            )}
-          {activeTab === 2 && changePassword()}
-          {activeTab === 3 && commonSettings(theme, handleChangeTheme)}
-          {activeTab === 4 && help()}
-        </S.Container>
+        {width > 560 && (
+          <S.Container>
+            <S.Menu>
+              <S.MenuItem active={activeTab === 1} onClick={() => changeTab(1)}>
+                Edit profile
+              </S.MenuItem>
+              <S.MenuItem active={activeTab === 2} onClick={() => changeTab(2)}>
+                Change password
+              </S.MenuItem>
+              <S.MenuItem active={activeTab === 3} onClick={() => changeTab(3)}>
+                Common settings
+              </S.MenuItem>
+              <S.MenuItem active={activeTab === 4} onClick={() => changeTab(4)}>
+                Help
+              </S.MenuItem>
+            </S.Menu>
+            {activeTab === 1 &&
+              efitProfile(
+                user,
+                fileList,
+                onChangeFile,
+                onPreview,
+                isModalOpened,
+                openModal,
+                closeModal,
+                profileEdit,
+                handleProfileEdit,
+                handleUpdateProfile
+              )}
+            {activeTab === 2 && changePassword()}
+            {activeTab === 3 && commonSettings(theme, handleChangeTheme)}
+            {activeTab === 4 && help()}
+          </S.Container>
+        )}
+
+        {width <= 560 && (
+          <Collapse accordion expandIcon={() => <Expand />}>
+            <Panel header="Edit profile" key="0">
+              {efitProfile(
+                user,
+                fileList,
+                onChangeFile,
+                onPreview,
+                isModalOpened,
+                openModal,
+                closeModal,
+                profileEdit,
+                handleProfileEdit,
+                handleUpdateProfile
+              )}
+            </Panel>
+            <Panel header="Change password" key="1">
+              {changePassword()}
+            </Panel>
+            <Panel header="Common settings" key="2">
+              {commonSettings(theme, handleChangeTheme)}
+            </Panel>
+            <Panel header="Help" key="3">
+              {help()}
+            </Panel>
+          </Collapse>
+        )}
       </H.Content>
     </H.Body>
   );
@@ -108,7 +142,7 @@ const efitProfile = (
         <Image src={fileList[0]?.thumbUrl || user.avatar} />
       </S.ProfilePhoto>
       <div>
-        <H.Username>{user.username}</H.Username>
+        <S.SettingsUsername>{user.username}</S.SettingsUsername>
         <S.Change onClick={openModal}>Change profile photo</S.Change>
       </div>
     </S.Flex>
@@ -119,7 +153,7 @@ const efitProfile = (
         type="text"
         id="name"
         placeholder={user.name}
-        value={profileEdit.name || ''}
+        value={profileEdit.name || ""}
         onChange={handleProfileEdit}
       />
     </S.InputGroup>
@@ -129,7 +163,7 @@ const efitProfile = (
         type="text"
         id="username"
         placeholder={user.username}
-        value={profileEdit.username || ''}
+        value={profileEdit.username || ""}
         onChange={handleProfileEdit}
       />
     </S.InputGroup>
@@ -139,7 +173,7 @@ const efitProfile = (
         type="text"
         id="website"
         placeholder={user.website || "Website"}
-        value={profileEdit.website || ''}
+        value={profileEdit.website || ""}
         onChange={handleProfileEdit}
       />
     </S.InputGroup>
@@ -150,7 +184,7 @@ const efitProfile = (
         autoSize={{ minRows: 2, maxRows: 4 }}
         type="text"
         id="about"
-        value={profileEdit.about || ''}
+        value={profileEdit.about || ""}
         onChange={handleProfileEdit}
       />
     </S.InputGroup>

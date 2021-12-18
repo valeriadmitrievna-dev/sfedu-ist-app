@@ -31,7 +31,7 @@ export default function MainHeaderLayout({
           Imagify
         </H.Logo>
       </Link>
-      {!location.pathname.includes("user") && (
+      {!location.pathname.includes("user") && !location.pathname.includes("settings") && (
         <H.SearchContainer>
           <H.SearchLabel htmlFor="search">
             <Search />

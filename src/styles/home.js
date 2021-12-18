@@ -94,6 +94,9 @@ export const Content = styled.div`
   padding: 2rem;
   overflow-y: auto;
   height: calc(100vh - 8rem);
+  @media (max-width: 768px) {
+    height: calc(100vh - 14rem);
+  }
   @media (max-width: 560px) {
     height: auto;
   }

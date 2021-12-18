@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Avatar } from "./home";
+import { Avatar, Username } from "./home";
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -11,6 +11,12 @@ export const Container = styled.div`
   margin-top: -2rem;
   display: grid;
   grid-template-columns: 23rem 1fr;
+  @media (max-width: 640px) {
+    grid-template-columns: 15rem 1fr;
+  }
+  @media (max-width: 560px) {
+    display: block;
+  }
 `;
 
 export const Menu = styled.aside`
@@ -20,6 +26,9 @@ export const Menu = styled.aside`
   display: flex;
   align-items: stretch;
   flex-direction: column;
+  @media (max-width: 560px) {
+    display: none;
+  }
 `;
 
 export const MenuItem = styled.button`
@@ -33,6 +42,10 @@ export const MenuItem = styled.button`
   &:hover {
     background: rgba(255, 255, 255, 0.3);
   }
+  @media (max-width: 640px) {
+    font-size: 1.4rem;
+    padding: 1.5rem 1rem;
+  }
 `;
 
 export const Content = styled.div`
@@ -45,6 +58,9 @@ export const Flex = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ProfilePhoto = styled(Avatar)`
@@ -56,6 +72,9 @@ export const Change = styled.button`
   margin-top: 1rem;
   color: rgb(${props => props.theme.mainColorMedium});
   font-weight: 600;
+  @media (max-width: 560px) {
+    margin: 0;
+  }
 `;
 
 export const Line = styled.hr`
@@ -177,5 +196,11 @@ export const Upload = styled.div`
   }
   input {
     display: none;
+  }
+`;
+
+export const SettingsUsername = styled(Username)`
+  @media (max-width: 560px) {
+    display: block;
   }
 `;

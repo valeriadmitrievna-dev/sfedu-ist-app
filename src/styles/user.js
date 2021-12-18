@@ -1,12 +1,25 @@
 import styled from "styled-components";
 import { Button } from "./global";
 
+export const Content = styled.div`
+  padding: 2rem;
+  overflow-y: auto;
+  height: calc(100vh - 7.5rem);
+  @media (max-width: 560px) {
+    height: auto;
+  }
+`;
+
 export const InfoSection = styled.div`
   max-width: 768px;
-  display: flex;
-  align-items: center;
+  display: grid;
   gap: 2rem;
   margin: 0 auto;
+  grid-template-columns: 18rem 1fr;
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;
 
 export const Avatar = styled.div`
@@ -17,6 +30,10 @@ export const Avatar = styled.div`
   border: 5px solid #fff;
   /* box-shadow: -5px 5px 0 0 rgba(255, 255, 255, 0.4),
     -10px 10px 0 0 rgba(255, 255, 255, 0.3); */
+  @media (max-width: 640px) {
+    width: 25rem;
+    height: 25rem;
+  }
 `;
 
 export const Info = styled.div`
@@ -30,6 +47,10 @@ export const Info = styled.div`
   border-radius: 1rem;
   flex-grow: 1;
   align-self: stretch;
+  @media (max-width: 640px) {
+    padding: 2rem;
+    width: 100%;
+  }
 `;
 
 export const InfoText = styled.p`
@@ -49,6 +70,9 @@ export const InfoLink = styled.a`
     color: rgb(${props => props.theme.mainColorMedium});
   }
   font-weight: bold;
+  @media (max-width: 540px) {
+    word-break: break-all;
+  }
 `;
 
 export const Grid = styled(InfoSection)`

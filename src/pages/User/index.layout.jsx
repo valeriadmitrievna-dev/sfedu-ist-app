@@ -88,7 +88,7 @@ export default function UserLayout({
         </P.ModalContent>
       </Modal>
       <MainHeader owner={profile?.username === user.username} />
-      <H.Content>
+      <U.Content>
         <U.InfoSection>
           <U.Avatar>
             <Image src={profile.avatar} />
@@ -109,7 +109,7 @@ export default function UserLayout({
             <U.Tools>
               <U.AddPicture onClick={openModal}>
                 <Plus />
-                Upload picture
+                Upload
               </U.AddPicture>
               <Link to="/settings">
                 <U.AddPicture>
@@ -135,7 +135,7 @@ export default function UserLayout({
             </>
           )}
         </U.Grid>
-      </H.Content>
+      </U.Content>
     </H.Body>
   );
 }

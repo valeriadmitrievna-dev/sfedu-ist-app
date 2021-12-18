@@ -39,7 +39,45 @@ export const GlobalStyle = createGlobalStyle`
       color: #fff;
       font-family: 'Comfortaa';
     }
-}
+  }
+  .ant-collapse {
+    color: rgba(${props => props.theme.mainColorMedium}, 1);
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    & > .ant-collapse-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      & > .ant-collapse-header {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        padding: 12px 16px;
+        color: rgba(${props => props.theme.mainColorMedium}, 1);
+        font-weight: bold;
+        line-height: 1.5715;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        > div {
+          width: 2rem;
+          height: 2rem;
+          svg {
+            width: 100%;
+            height: 100%;
+            path {
+              stroke: rgba(${props => props.theme.mainColorMedium}, 1);
+            }
+          }
+        }
+      }
+      .ant-collapse-content {
+        color: #fff;
+        background-color: transparent;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
 `;
 
 export const GlassContainer = styled.div`
