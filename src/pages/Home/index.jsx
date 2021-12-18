@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import HomeLayout from "./index.layout";
 import { posts } from "../../prefabs";
+import {
+  GetPicturesLengthService,
+  GetPicturesService,
+} from "../../services/picture";
+import { errorMessage } from "../../utils";
 
 export default function Home() {
   const [pictures, setPictures] = useState([]);
@@ -9,15 +14,22 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const step = 20;
 
-  const handleLoadMore = () => {
+  const handleLoadMore = async () => {
     if (pictures.length < length && !loading) {
       setLoading(true);
-      const start = pictures.length;
-      const end = pictures.length + step;
-      setTimeout(() => {
-        setPictures([...pictures, ...posts.slice(start, end)]);
-        setLoading(false);
-      }, 2000);
+      const page = Math.round(pictures.length / step);
+      console.log(page);
+      try {
+        const { data } = await GetPicturesService(step, page);
+        if (data.error) {
+          throw new Error(data.error);
+        } else {
+          setPictures([...pictures, ...data]);
+        }
+      } catch (error) {
+        errorMessage(error.message);
+      }
+      setLoading(false);
     }
   };
 
@@ -28,8 +40,27 @@ export default function Home() {
     }
   };
 
+  const handleGetLength = async () => {
+    try {
+      const { data } = await GetPicturesLengthService();
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        setLength(data);
+      }
+    } catch (error) {
+      errorMessage(error.message);
+    }
+  };
+
   useEffect(() => {
-    handleLoadMore();
+    if (length) {
+      handleLoadMore();
+    }
+  }, [length]);
+
+  useEffect(() => {
+    handleGetLength();
   }, []);
 
   return (

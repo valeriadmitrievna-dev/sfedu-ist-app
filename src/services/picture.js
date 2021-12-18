@@ -12,3 +12,21 @@ export const UploadPictureService = async formData => {
     return err.response;
   }
 };
+
+export const GetPicturesLengthService = async () => {
+  try {
+    const response = await API.get("/picture/length");
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export const GetPicturesService = async (count, page) => {
+  try {
+    const response = await API.get(`/picture/${count}/${page}`);
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};
