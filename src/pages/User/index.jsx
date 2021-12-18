@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import UserLayout from "./index.layout";
 import FullScreenLoader from "../../components/FullScreenLoader";
 import { LogoutService } from "../../services/user";
-import { logOut } from "../../redux/root";
+import { logOut, uploadNewPicture } from "../../redux/root";
 import { errorMessage, warningMessage } from "../../utils";
 import { UploadPictureService } from "../../services/picture";
 
@@ -14,6 +14,7 @@ export default function User() {
   const params = useParams();
   const [profile, setProfile] = useState();
   const [loading, setLoading] = useState(true);
+  const [picLoading, setPicLoading] = useState(false);
   const [isModalOpened, setModalOpened] = useState(false);
   const openModal = () => {
     setModalOpened(true);
@@ -54,18 +55,21 @@ export default function User() {
     } else if (!newPicture.picture) {
       warningMessage("Picture is required");
     }
-    setLoading(true);
+    setPicLoading(true);
     try {
       const { data } = await UploadPictureService(formData);
       if (data.error) {
         throw new Error(data.error);
       } else {
-        console.log(data);
+        closeModal();
+        setNewPicture({});
+        setPreview();
+        dispatch(uploadNewPicture(data));
       }
     } catch (error) {
       errorMessage(error.message);
     }
-    setLoading(false);
+    setPicLoading(false);
   };
 
   const handleLogout = async () => {
@@ -88,7 +92,7 @@ export default function User() {
       console.log("its not me");
     }
     setLoading(false);
-  }, []);
+  }, [user]);
 
   return loading ? (
     <FullScreenLoader />
@@ -106,6 +110,7 @@ export default function User() {
       handleUploadPicture={handleUploadPicture}
       handleRemovePicture={handleRemovePicture}
       handleUploadNewPicture={handleUploadNewPicture}
+      picLoading={picLoading}
     />
   );
 }

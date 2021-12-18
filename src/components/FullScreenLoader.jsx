@@ -21,7 +21,7 @@ const LoaderContainer = styled.section`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  z-index: 9999;
 `;
 
 const bounce = keyframes`

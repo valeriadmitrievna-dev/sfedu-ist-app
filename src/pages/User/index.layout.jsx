@@ -10,6 +10,7 @@ import { ReactComponent as Settings } from "../../assets/setting.svg";
 import { ReactComponent as Logout } from "../../assets/turnoff.svg";
 import { ReactComponent as Plus } from "../../assets/plus.svg";
 import { ReactComponent as Remove } from "../../assets/trash.svg";
+import FullScreenLoader from "../../components/FullScreenLoader";
 import { Link } from "react-router-dom";
 import { Modal, Input } from "antd";
 const { TextArea } = Input;
@@ -27,9 +28,11 @@ export default function UserLayout({
   handleUploadPicture,
   handleRemovePicture,
   handleUploadNewPicture,
+  picLoading,
 }) {
   return (
     <H.Body>
+      {picLoading && <FullScreenLoader />}
       <Modal
         title={<P.ModalTitle>Upload picture</P.ModalTitle>}
         visible={isModalOpened}

@@ -24,9 +24,13 @@ const rootSlice = createSlice({
     changeTheme: (state, { payload }) => {
       state.theme = payload;
     },
+    uploadNewPicture: (state, { payload }) => {
+      state.user.pictures.push(payload);
+    },
   },
 });
 
 const rootReducer = rootSlice.reducer;
-export const { logIn, logOut, setUser, changeTheme } = rootSlice.actions;
+export const { logIn, logOut, setUser, changeTheme, uploadNewPicture } =
+  rootSlice.actions;
 export default rootReducer;
