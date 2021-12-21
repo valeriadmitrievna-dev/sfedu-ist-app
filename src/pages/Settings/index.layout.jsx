@@ -39,14 +39,14 @@ export default function SettingsLayout({
               <S.MenuItem active={activeTab === 1} onClick={() => changeTab(1)}>
                 Edit profile
               </S.MenuItem>
-              <S.MenuItem active={activeTab === 2} onClick={() => changeTab(2)}>
+              {/* <S.MenuItem active={activeTab === 2} onClick={() => changeTab(2)}>
                 Change password
-              </S.MenuItem>
+              </S.MenuItem> */}
               <S.MenuItem active={activeTab === 3} onClick={() => changeTab(3)}>
                 Common settings
               </S.MenuItem>
               <S.MenuItem active={activeTab === 4} onClick={() => changeTab(4)}>
-                Help
+                Updates
               </S.MenuItem>
             </S.Menu>
             {activeTab === 1 &&
@@ -62,7 +62,7 @@ export default function SettingsLayout({
                 handleProfileEdit,
                 handleUpdateProfile
               )}
-            {activeTab === 2 && changePassword()}
+            {/* {activeTab === 2 && changePassword()} */}
             {activeTab === 3 && commonSettings(theme, handleChangeTheme)}
             {activeTab === 4 && help()}
           </S.Container>
@@ -84,13 +84,13 @@ export default function SettingsLayout({
                 handleUpdateProfile
               )}
             </Panel>
-            <Panel header="Change password" key="1">
+            {/* <Panel header="Change password" key="1">
               {changePassword()}
-            </Panel>
+            </Panel> */}
             <Panel header="Common settings" key="2">
               {commonSettings(theme, handleChangeTheme)}
             </Panel>
-            <Panel header="Help" key="3">
+            <Panel header="Updates" key="3">
               {help()}
             </Panel>
           </Collapse>
@@ -253,11 +253,22 @@ const commonSettings = (theme, handleChangeTheme) => {
           />
         ))}
       </S.Flex>
-      <S.Line />
+      {/* <S.Line />
       <S.Title>Language</S.Title>
-      <S.Flex>Coming soon!</S.Flex>
+      <S.Flex>Coming soon!</S.Flex> */}
     </S.Content>
   );
 };
 
-const help = () => <ComingSoon>Coming soon!</ComingSoon>;
+const help = () => (
+  <S.Content>
+    <p>Wait for updates:</p>
+    <ul>
+      <li>New item in the settings menu - password change</li>
+      <li>
+        New item in the settings menu - communication with the help center
+      </li>
+      <li>The ability to change the main language to Russian</li>
+    </ul>
+  </S.Content>
+);

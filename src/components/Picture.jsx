@@ -69,11 +69,13 @@ export default function PictureLayout({
                   {picture.likes}
                 </P.Likes>
               </P.ModalPictureActions> */}
-              <P.DeleteBigButton
-                onClick={() => handleDeletePicture(picture._id)}
-              >
-                Delete
-              </P.DeleteBigButton>
+              {deletable && (
+                <P.DeleteBigButton
+                  onClick={() => handleDeletePicture(picture._id)}
+                >
+                  Delete
+                </P.DeleteBigButton>
+              )}
             </P.ModalPictureInfo>
           </P.ModalPictureSection>
         </P.ModalContent>

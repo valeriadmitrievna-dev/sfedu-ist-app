@@ -102,6 +102,11 @@ export const GlobalStyle = createGlobalStyle`
     gap: 16px;
     justify-content: flex-end;
   }
+  @media (min-width: 540px) {
+    li {
+      list-style-position: inside;
+    }
+  }
 `;
 
 export const GlassContainer = styled.div`
