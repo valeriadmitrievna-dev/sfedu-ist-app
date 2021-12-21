@@ -79,8 +79,8 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   .ant-modal-close {
-    top: 16px;
-    right: 16px;
+    top: 0;
+    right: 0;
     .ant-modal-close-x {
       width: 50px;
       height: 50px;
@@ -106,6 +106,21 @@ export const GlobalStyle = createGlobalStyle`
     li {
       list-style-position: inside;
     }
+  }
+  .ant-btn {
+    border-width: 2px;
+    border-color: #292d32;
+    font-weight: 600;
+    background: transparent;
+    &:hover {
+      background: #292d32;
+      color: #fff;
+      border-color: #292d32;
+    }
+  }
+  .ant-btn.ant-btn-primary {
+    border-color: rgb(${props => props.theme.mainColorMedium});
+    background: rgb(${props => props.theme.mainColorMedium});
   }
 `;
 

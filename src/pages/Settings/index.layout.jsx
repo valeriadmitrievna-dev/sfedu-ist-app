@@ -119,11 +119,14 @@ const efitProfile = (
       onCancel={closeModal}
       onOk={closeModal}
       centered
+      closable={false}
       footer={false}
       width={320}
     >
       <P.ModalContent>
-        <ImgCrop>
+        <ImgCrop
+          modalTitle={<P.ModalTitle>Upload new avatar</P.ModalTitle>}
+        >
           <Upload
             accept="image/*"
             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"

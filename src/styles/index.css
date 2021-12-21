@@ -85,6 +85,10 @@ a {
   font-size: 1.6rem;
 }
 
+.ant-modal-close-x {
+  display: none;
+}
+
 .ant-modal-content {
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(1rem);
