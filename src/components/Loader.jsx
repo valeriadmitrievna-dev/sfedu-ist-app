@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-export default function Loader() {
+export default function Loader({ small }) {
   return (
     <LoaderContainer>
-      <LoaderSpiner />
+      <LoaderSpiner small={small} />
     </LoaderContainer>
   );
 }
@@ -33,5 +33,5 @@ const LoaderSpiner = styled.span`
   border-radius: 50%;
   display: inline-block;
   animation: ${rotation} 1s linear infinite;
-  margin: 3rem 0;
+  ${({ small }) => !small && "margin: 3rem 0;"}
 `;

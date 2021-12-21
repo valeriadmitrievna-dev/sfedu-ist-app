@@ -30,3 +30,12 @@ export const GetPicturesService = async (count, page) => {
     return err.response;
   }
 };
+
+export const DeletePictureService = async id => {
+  try {
+    const response = await API.delete(`/picture/${id}`);
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};

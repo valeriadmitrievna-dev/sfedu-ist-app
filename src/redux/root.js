@@ -29,10 +29,19 @@ const rootSlice = createSlice({
         ? [payload, ...state.user.pictures]
         : [payload];
     },
+    deletePicture: (state, { payload }) => {
+      state.user.pictures = state.user.pictures.filter(p => p._id !== payload);
+    },
   },
 });
 
 const rootReducer = rootSlice.reducer;
-export const { logIn, logOut, setUser, changeTheme, uploadNewPicture } =
-  rootSlice.actions;
+export const {
+  logIn,
+  logOut,
+  setUser,
+  changeTheme,
+  uploadNewPicture,
+  deletePicture,
+} = rootSlice.actions;
 export default rootReducer;

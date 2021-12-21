@@ -3,14 +3,23 @@ import { Link } from "react-router-dom";
 import * as P from "../styles/picture";
 import Image from "./Image";
 import { ReactComponent as Close } from "../assets/off_outline_close.svg";
+import { ReactComponent as Delete } from "../assets/trash.svg";
 import { Modal } from "antd";
 import { format } from "date-fns";
+import Loader from "./Loader";
 
-export default function PictureLayout({ picture }) {
+export default function PictureLayout({
+  picture,
+  deletable,
+  handleDeletePicture,
+  isDeleting,
+}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
+  const showModal = e => {
+    if (e.target === e.currentTarget) {
+      setIsModalVisible(true);
+    }
   };
 
   const closeModal = () => {
@@ -60,18 +69,31 @@ export default function PictureLayout({ picture }) {
                   {picture.likes}
                 </P.Likes>
               </P.ModalPictureActions> */}
+              <P.DeleteBigButton
+                onClick={() => handleDeletePicture(picture._id)}
+              >
+                Delete
+              </P.DeleteBigButton>
             </P.ModalPictureInfo>
           </P.ModalPictureSection>
         </P.ModalContent>
       </Modal>
-      <P.Container onClick={showModal}>
+      <P.Container>
         <Image big src={picture.source} alt={picture.title} />
-        <P.Overlay>
+        <P.Overlay onClick={showModal}>
           <P.OwnerName>
             <Link to={`/user/${picture.owner.username}`}>
               @{picture.owner.username}
             </Link>
           </P.OwnerName>
+          {deletable && (
+            <P.DeleteButton
+              className="delete_button"
+              onClick={() => handleDeletePicture(picture._id)}
+            >
+              {isDeleting ? <Loader small /> : <Delete />}
+            </P.DeleteButton>
+          )}
           {/* <P.Likes liked={true}>
             <Heart />
             {picture.likes}

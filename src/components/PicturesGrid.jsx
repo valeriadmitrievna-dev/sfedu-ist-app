@@ -9,6 +9,9 @@ export default function PicturesGrid({
   pictures,
   loading,
   breakpoints,
+  deletable,
+  handleDeletePicture,
+  isDeleting
 }) {
   return (
     <Container>
@@ -20,7 +23,13 @@ export default function PicturesGrid({
       >
         <Masonry gutter="2rem">
           {pictures.map(p => (
-            <Picture key={p._id} picture={p} />
+            <Picture
+              key={p._id}
+              picture={p}
+              deletable={deletable}
+              handleDeletePicture={handleDeletePicture}
+              isDeleting={isDeleting}
+            />
           ))}
         </Masonry>
       </ResponsiveMasonry>

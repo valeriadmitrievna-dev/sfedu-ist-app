@@ -154,3 +154,39 @@ export const ModalPictureActions = styled.div`
     }
   }
 `;
+
+export const DeleteButton = styled.div`
+  margin-left: auto;
+  svg {
+    width: 30px;
+    height: 30px;
+    path {
+      transition: 0.3s;
+    }
+    &:hover path {
+      fill: red;
+      &:last-of-type {
+        stroke: red;
+      }
+    }
+  }
+`;
+
+export const DeleteBigButton = styled.button`
+  padding: 10px 24px;
+  margin-right: auto;
+  margin-top: 0;
+  border: 3px solid red;
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  max-width: 200px;
+  width: 100%;
+  text-align: center;
+  transition: 0.3s;
+  &:hover {
+    background: red;
+    color: white;
+  }
+`;

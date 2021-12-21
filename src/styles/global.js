@@ -96,6 +96,12 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  .ant-modal-footer {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    justify-content: flex-end;
+  }
 `;
 
 export const GlassContainer = styled.div`

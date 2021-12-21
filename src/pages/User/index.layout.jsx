@@ -30,6 +30,8 @@ export default function UserLayout({
   handleRemovePicture,
   handleUploadNewPicture,
   picLoading,
+  handleDeletePicture,
+  isDeleting
 }) {
   return (
     <H.Body>
@@ -137,6 +139,9 @@ export default function UserLayout({
                 pictures={profile.pictures}
                 loading={false}
                 breakpoints={{ 0: 1, 320: 2, 768: 3 }}
+                deletable={profile?.username === user.username}
+                handleDeletePicture={handleDeletePicture}
+                isDeleting={isDeleting}
               />
             </>
           )}

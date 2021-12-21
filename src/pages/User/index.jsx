@@ -4,9 +4,12 @@ import { useParams } from "react-router-dom";
 import UserLayout from "./index.layout";
 import FullScreenLoader from "../../components/FullScreenLoader";
 import { LogoutService, UserDataService } from "../../services/user";
-import { logOut, uploadNewPicture } from "../../redux/root";
+import { deletePicture, logOut, uploadNewPicture } from "../../redux/root";
 import { errorMessage, warningMessage } from "../../utils";
-import { UploadPictureService } from "../../services/picture";
+import {
+  DeletePictureService,
+  UploadPictureService,
+} from "../../services/picture";
 
 export default function User() {
   const { user } = useSelector(state => state.root);
@@ -72,6 +75,22 @@ export default function User() {
     setPicLoading(false);
   };
 
+  const [isDeleting, setDeleting] = useState(false);
+  const handleDeletePicture = async id => {
+    try {
+      setDeleting(true)
+      const res = await DeletePictureService(id);
+      if (res.status === 200) {
+        dispatch(deletePicture(id));
+      } else {
+        throw new Error(res.data.error);
+      }
+    } catch (error) {
+      errorMessage(error.message);
+    }
+    setDeleting(false)
+  };
+
   const handleLogout = async () => {
     try {
       const res = await LogoutService();
@@ -122,6 +141,8 @@ export default function User() {
       handleRemovePicture={handleRemovePicture}
       handleUploadNewPicture={handleUploadNewPicture}
       picLoading={picLoading}
+      handleDeletePicture={handleDeletePicture}
+      isDeleting={isDeleting}
     />
   );
 }
