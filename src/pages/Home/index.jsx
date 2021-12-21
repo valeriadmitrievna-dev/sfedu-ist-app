@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import HomeLayout from "./index.layout";
-import { posts } from "../../prefabs";
 import {
   GetPicturesLengthService,
   GetPicturesService,
@@ -10,7 +9,9 @@ import { errorMessage } from "../../utils";
 
 export default function Home() {
   const [pictures, setPictures] = useState([]);
-  const [length, setLength] = useState(posts.length);
+  const [resultPictures, setResultPictures] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [length, setLength] = useState(0);
   const [loading, setLoading] = useState(false);
   const step = 20;
 
@@ -18,7 +19,6 @@ export default function Home() {
     if (pictures.length < length && !loading) {
       setLoading(true);
       const page = Math.round(pictures.length / step);
-      console.log(page);
       try {
         const { data } = await GetPicturesService(step, page);
         if (data.error) {
@@ -53,7 +53,28 @@ export default function Home() {
     }
   };
 
+  const handleInputSearch = e => {
+    setSearchInput(e.target.value);
+  };
+
   useEffect(() => {
+    if (searchInput.trim().length > 0) {
+      setResultPictures(
+        pictures.filter(p =>
+          p.title.toLowerCase().includes(searchInput.toLowerCase())
+        )
+      );
+    } else {
+      setResultPictures(pictures);
+    }
+  }, [searchInput]);
+
+  useEffect(() => {
+    setResultPictures(pictures);
+  }, [pictures]);
+
+  useEffect(() => {
+    console.log(length);
     if (length) {
       handleLoadMore();
     }
@@ -65,9 +86,11 @@ export default function Home() {
 
   return (
     <HomeLayout
-      pictures={pictures}
+      resultPictures={resultPictures}
       loading={loading}
       handleCheckScroll={handleCheckScroll}
+      handleInputSearch={handleInputSearch}
+      searchInput={searchInput}
     />
   );
 }

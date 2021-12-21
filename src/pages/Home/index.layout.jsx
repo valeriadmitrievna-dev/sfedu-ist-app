@@ -1,14 +1,23 @@
-import React, { useRef } from "react";
+import React from "react";
 import * as H from "../../styles/home";
 import MainHeader from "../../components/MainHeader";
 import PicturesGrid from "../../components/PicturesGrid";
 
-export default function HomeLayout({ pictures, loading, handleCheckScroll }) {
+export default function HomeLayout({
+  resultPictures,
+  loading,
+  handleCheckScroll,
+  handleInputSearch,
+  searchInput,
+}) {
   return (
     <H.Body onScroll={handleCheckScroll}>
-      <MainHeader />
+      <MainHeader
+        handleInputSearch={handleInputSearch}
+        searchInput={searchInput}
+      />
       <H.Content onScroll={handleCheckScroll}>
-        <PicturesGrid pictures={pictures} loading={loading} />
+        <PicturesGrid pictures={resultPictures} loading={loading} />
       </H.Content>
     </H.Body>
   );

@@ -8,9 +8,9 @@ import { LogoutService } from "../../services/user";
 import { errorMessage } from "../../utils";
 import { useLocation } from "react-router-dom";
 
-export default function MainHeader({ owner }) {
+export default function MainHeader({ owner, handleInputSearch, searchInput }) {
   const dispatch = useDispatch();
-  const location = useLocation()
+  const location = useLocation();
   const { user } = useSelector(state => state.root);
   const [isNotificationsOpened, setNotificationsOpened] = useState(false);
   const [isUserBodyOpened, setUserBodyOpened] = useState(false);
@@ -38,7 +38,7 @@ export default function MainHeader({ owner }) {
       errorMessage("Service unavailable");
     }
   };
-  
+
   return (
     !!user && (
       <MainHeaderLayout
@@ -52,6 +52,8 @@ export default function MainHeader({ owner }) {
         user={user}
         owner={owner}
         location={location}
+        handleInputSearch={handleInputSearch}
+        searchInput={searchInput}
       />
     )
   );

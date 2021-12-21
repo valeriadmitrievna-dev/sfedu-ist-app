@@ -8,7 +8,6 @@ import { ReactComponent as Settings } from "../../assets/setting.svg";
 import { ReactComponent as Logout } from "../../assets/turnoff.svg";
 import Notification from "../Notification";
 import Image from "../Image";
-import { users } from "../../prefabs";
 import { Link } from "react-router-dom";
 
 export default function MainHeaderLayout({
@@ -22,6 +21,8 @@ export default function MainHeaderLayout({
   user,
   owner,
   location,
+  handleInputSearch,
+  searchInput,
 }) {
   return (
     <H.Header>
@@ -31,14 +32,20 @@ export default function MainHeaderLayout({
           Imagify
         </H.Logo>
       </Link>
-      {!location.pathname.includes("user") && !location.pathname.includes("settings") && (
-        <H.SearchContainer>
-          <H.SearchLabel htmlFor="search">
-            <Search />
-          </H.SearchLabel>
-          <H.Search placeholder="Search" id="search" />
-        </H.SearchContainer>
-      )}
+      {!location.pathname.includes("user") &&
+        !location.pathname.includes("settings") && (
+          <H.SearchContainer>
+            <H.SearchLabel htmlFor="search">
+              <Search />
+            </H.SearchLabel>
+            <H.Search
+              placeholder="Search"
+              id="search"
+              value={searchInput}
+              onChange={handleInputSearch}
+            />
+          </H.SearchContainer>
+        )}
       {/* <H.Notifications ref={notificationsBody}>
         <H.NotificationsButton
           opened={isNotificationsOpened}
