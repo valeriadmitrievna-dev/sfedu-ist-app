@@ -78,6 +78,24 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  .ant-modal-close {
+    top: 16px;
+    right: 16px;
+    .ant-modal-close-x {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        width: 60%;
+        height: 60%;
+        path {
+          fill: #292d32;
+        }
+      }
+    }
+  }
 `;
 
 export const GlassContainer = styled.div`

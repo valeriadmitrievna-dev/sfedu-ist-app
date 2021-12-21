@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as P from "../styles/picture";
 import Image from "./Image";
-import { ReactComponent as Heart } from "../assets/heart.svg";
+import { ReactComponent as Close } from "../assets/off_outline_close.svg";
 import { Modal } from "antd";
 import { format } from "date-fns";
 
@@ -20,6 +20,7 @@ export default function PictureLayout({ picture }) {
   return (
     <>
       <Modal
+        closeIcon={<Close />}
         title={
           <Link to={`/user/${picture.owner.username}`}>
             <P.ModalTitle>
