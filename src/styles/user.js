@@ -184,3 +184,17 @@ export const Preview = styled.div`
     visibility: visible;
   }
 `;
+
+export const ModalCloseIcon = styled.div`
+  width: 54px;
+  height: 54px;
+  margin-top: -26px;
+  margin-right: -26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 50% !important;
+    height: 50% !important;
+  }
+`;

@@ -10,6 +10,7 @@ import { ReactComponent as Settings } from "../../assets/setting.svg";
 import { ReactComponent as Logout } from "../../assets/turnoff.svg";
 import { ReactComponent as Plus } from "../../assets/plus.svg";
 import { ReactComponent as Remove } from "../../assets/trash.svg";
+import { ReactComponent as Close } from "../../assets/off_outline_close.svg";
 import FullScreenLoader from "../../components/FullScreenLoader";
 import { Link } from "react-router-dom";
 import { Modal, Input } from "antd";
@@ -34,6 +35,11 @@ export default function UserLayout({
     <H.Body>
       {picLoading && <FullScreenLoader />}
       <Modal
+        closeIcon={
+          <U.ModalCloseIcon>
+            <Close />
+          </U.ModalCloseIcon>
+        }
         title={<P.ModalTitle>Upload picture</P.ModalTitle>}
         visible={isModalOpened}
         onCancel={closeModal}
