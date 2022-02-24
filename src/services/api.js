@@ -4,12 +4,15 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_API,
   responseType: "json",
   withCredentials: true,
+  crossorigin: true,
 });
 
 instance.interceptors.request.use(function (config) {
   const token = localStorage.getItem("access token");
   config.headers.Authorization = `Bearer ${token}`;
-  config.headers["Access-Control-Allow-Origin"] = process.env.REACT_APP_ORIGIN;
+  config.headers["Access-Control-Allow-Origin"] = process.env.REACT_APP_API;
+  config.headers["Access-Control-Allow-Methods"] =
+    "PUT,POST,GET,DELETE,OPTIONS";
   return config;
 });
 
